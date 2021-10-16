@@ -4,7 +4,7 @@ import './App.css';
 import './index.css';
 /* import App from './App'; */
 import reportWebVitals from './reportWebVitals';
-
+import Row from './row'
 
 
 
@@ -41,20 +41,13 @@ const App = () => {
     let newFormValues = [...formValues];
     newFormValues[index][event.target.name] = event.target.value;
     setFormValues(newFormValues);
-  }
+  };
+
   return (
     <div className="wrapper">
       <div className="container">
         {formValues.map((element, index) => (
-          <div key={index}>
-            <div>Name: {element.name}</div>
-            <div>Surname: {element.surname}</div>
-            <label htmlFor="days">Working days: </label>
-            <input id="days" type="text" name="days" value={element.days} onChange={e => handleChange(index, e)} />
-            <label htmlFor="salaryPerDay">Salary per day: </label>
-            <input id="salaryPerDay" type="text" name="salaryPerDay" value={element.salaryPerDay} onChange={e => handleChange(index, e)} />
-            <div>Salary for mounth: {element.days * element.salaryPerDay}</div>
-          </div>
+          <Row name={element.name} surname={element.surname} days={element.days} salaryPerDay={element.salaryPerDay} index={index} handleChange={handleChange}/>  
         ))}
 
       </div>
